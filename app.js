@@ -16,13 +16,17 @@ app.set("view engine", "ejs");
 
 //manggil routes
 const routeIndex = require('./routes/index');
+const routeBuku = require('./routes/buku');
 
+//manggil models
+const modelBuku = require('./models/buku');
 
 // menggunakan body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //pake routes
 app.use(routeIndex);
+app.use(routeBuku);
 
 // setting port
 app.listen(3000, () => {

@@ -5,7 +5,7 @@ const router = express.Router();
 
 //ngarouter halaman
 router.get('/', (req, res) => {
-	res.render("index.ejs");
+	res.render("index");
 });
 
 module.exports = router;
