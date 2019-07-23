@@ -5,7 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 //manggil models
-const Buku = require('./models/buku');
+const modelBuku = require('./models/buku');
+const modelUser = require('./models/user');
 
 const Sequelize = require('./configs/sequelize');
 // menggunakan express
@@ -17,19 +18,21 @@ app.set("view engine", "ejs");
 //manggil routes
 const routeIndex = require('./routes/index');
 const routeBuku = require('./routes/buku');
-
-//manggil models
-const modelBuku = require('./models/buku');
+const routeUser = require('./routes/user');
 
 // menggunakan body parser
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
 //pake routes
-app.use(routeIndex);
-app.use(routeBuku);
+app.use('/index',routeIndex);
+app.use('/buku',routeBuku);
+app.use('/user',routeUser);
+
 
 // setting port
-app.listen(3000, () => {
+app.listen(3104, () => {
 	console.log("jalan jow");
 	Sequelize.sync();
 })
