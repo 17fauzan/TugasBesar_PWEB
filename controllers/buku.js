@@ -15,7 +15,8 @@ module.exports.getIndexBuku = (req, res) => {
                 Book.findAll()
                     .then((book) => {
                         res.json(book);
-                    }).catch((error) => {
+					})
+					.catch((error) => {
                         throw error;
                     })
             } else {
