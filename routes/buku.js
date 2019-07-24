@@ -12,4 +12,6 @@ router.post('/add', auth.verifyToken, controlBuku.postBuku);
 
 router.put('/edit/:id', auth.verifyToken, controlBuku.putBuku);
 
+router.get('/all', controlBuku.FindAll);
+
 module.exports = router;

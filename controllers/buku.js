@@ -77,3 +77,14 @@ module.exports.putBuku = (req, res) => {
         }
     })
 }
+
+module.exports.FindAll = (req, res) => {
+    Buku.findAll({
+    })
+        .then((buku) => {
+            res.json(buku);
+        })
+        .catch((error) => {
+            throw error;
+        })
+}
