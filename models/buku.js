@@ -9,6 +9,8 @@ Buku.init({
 	penerbit: Sequelize.STRING,
 	penulis: Sequelize.STRING,
 	harga: Sequelize.INTEGER
-}, {sequelize, modelName: 'buku'});
+}, {
+	sequelize, modelName: 'buku'
+});
 
 module.exports = Buku;

@@ -6,6 +6,6 @@ const controlBuku = require ('../controllers/buku');
 
 const auth = require('../configs/auth');
 
-router.get('/', auth.verifyToken, controlBuku.getIndexBuku);
+router.get('/', auth.verifyToken,controlBuku.getIndexBuku);
 
 module.exports = router;
