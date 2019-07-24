@@ -9,5 +9,4 @@ Order.init({
 }, { 
 	sequelize, modelName: 'order' 
 });
-
 module.exports = Order;

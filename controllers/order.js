@@ -1,5 +1,5 @@
-const order = require('../models/order');
-const session = require('../models/session');
+const Order = require('../models/Order');
+const Session = require('../models/Session');
 
 
 module.exports.postOrder = (req, res) => {
@@ -56,4 +56,4 @@ module.exports.getDetail = (req, res) => {
 		.catch((error) => {
 			console.log(error)
 		})
-	}
+}
