@@ -6,10 +6,8 @@ const controlBuku = require ('../controllers/buku');
 
 const auth = require('../configs/auth');
 
-<<<<<<< HEAD
-router.get('/', auth.verifyToken,controlBuku.getIndexBuku);
-
-=======
 router.get('/', auth.verifyToken, controlBuku.getIndexBuku);
->>>>>>> 12ebc2fe2341deeb8a8dc6ca57f61fb8a3233431
+
+router.post('/add', auth.verifyToken, controlBuku.postBuku);
+
 module.exports = router;

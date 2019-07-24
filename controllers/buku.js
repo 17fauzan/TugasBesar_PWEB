@@ -25,3 +25,28 @@ module.exports.getIndexBuku = (req, res) => {
         }
     });
 }
+
+module.exports.postBuku = (req, res) => {
+    jw.verify(req.token, process.env.SECRETKEY, (error, authData) => {
+        if (error) {
+            res.sendStatus(403);
+        } else {
+            if (authData['roles'] == "admin") {
+                Book.create({
+                    judul_buku: req.body.judul_buku,
+					penerbit: req.body.penerbit,
+					penulis: req.body.penulis,
+                    harga: req.body.harga
+                })
+                    .then((buku) => {
+                        res.json(buku);
+                    })
+                    .catch((error) => {
+                        throw error;
+                    })
+            } else {
+                res.sendStatus(403);
+            }
+        }
+    });
+}
