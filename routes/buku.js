@@ -14,4 +14,5 @@ router.put('/edit/:id', auth.verifyToken, controlBuku.putBuku);
 
 router.get('/all', controlBuku.FindAll);
 
+router.get('/:judul', controlBuku.FindJudulBuku);
 module.exports = router;

@@ -88,3 +88,15 @@ module.exports.FindAll = (req, res) => {
             throw error;
         })
 }
+
+module.exports.FindJudulBuku = (req, res) => {
+    Buku.findAll({
+        where: {
+            judul: req.params.judul
+        }
+    }).then((buku) => {
+        res.json(buku);
+    }).catch((error) => {
+        throw error;
+    });
+}
