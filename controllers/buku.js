@@ -78,6 +78,35 @@ module.exports.putBuku = (req, res) => {
     })
 }
 
+module.exports.hapusBuku = (req, res) => {
+    jw.verify(req.token, process.env.SECRETKEY, (error, authData) => {
+        if (error) {
+            res.sendStatus(403);
+        } else {
+            if (authData['roles'] == "admin") {
+                Buku.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                    .then(function (deletedRecord) {
+                        if (deletedRecord === 1) {
+                            res.status(200).json({ message: "Hapus Sukses coy" });
+                        }
+                        else {
+                            res.status(404).json({ message: "Record Not Found" })
+                        }
+                    })
+                    .catch(function (error) {
+                        res.status(500).json(error);
+                    });
+            } else {
+                res.sendStatus(403);
+            }
+        }
+    })
+}
+
 module.exports.FindAll = (req, res) => {
     Buku.findAll({
     })

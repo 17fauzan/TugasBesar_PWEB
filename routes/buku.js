@@ -12,6 +12,8 @@ router.post('/add', auth.verifyToken, controlBuku.postBuku);
 
 router.put('/edit/:id', auth.verifyToken, controlBuku.putBuku);
 
+router.delete('/delete/:id', auth.verifyToken, controlBuku.hapusBuku);
+
 router.get('/all', controlBuku.FindAll);
 
 router.get('/:judul', controlBuku.FindJudulBuku);
