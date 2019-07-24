@@ -12,9 +12,9 @@ module.exports.getIndexBuku = (req, res) => {
             res.sendStatus(403);
         } else {
             if (authData['roles'] == "admin") {
-                Book.findAll()
-                    .then((book) => {
-                        res.json(book);
+                Buku.findAll()
+                    .then((buku) => {
+                        res.json(buku);
 					})
 					.catch((error) => {
                         throw error;
@@ -32,7 +32,7 @@ module.exports.postBuku = (req, res) => {
             res.sendStatus(403);
         } else {
             if (authData['roles'] == "admin") {
-                Book.create({
+                Buku.create({
                     judul_buku: req.body.judul_buku,
 					penerbit: req.body.penerbit,
 					penulis: req.body.penulis,
@@ -49,4 +49,31 @@ module.exports.postBuku = (req, res) => {
             }
         }
     });
+}
+
+module.exports.putBuku = (req, res) => {
+    jw.verify(req.token, process.env.SECRETKEY, (error, authData) => {
+        if (error) {
+            res.sendStatus(403);
+        } else {
+            if (authData['roles'] == "admin") {
+                Buku.update({
+                    judul_buku: req.body.judul_buku,
+					penerbit: req.body.penerbit,
+					penulis: req.body.penulis,
+                    harga: req.body.harga
+                }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then((buku) => {
+                        res.json(buku);
+                    }).catch((error) => {
+                        throw error;
+                    })
+            } else {
+                res.sendStatus(403);
+            }
+        }
+    })
 }
